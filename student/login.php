@@ -1,5 +1,6 @@
 <?php
-include "connection.php"
+session_start(); 
+include "connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -81,9 +82,10 @@ if(isset( $_POST['submit1'])){
 <?php
 
     }else {
+        $_SESSION["username"]=$_POST["username"];
         ?>
         <script type="text/javascript">
-            window.location="aa.php";
+            window.location="my_issued_books.php";
         </script>
 
 
