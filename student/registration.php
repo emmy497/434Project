@@ -72,10 +72,13 @@ include "connection.php"
            
               ?>
                <div class="alert alert-success col-lg-6 col-lg-push-3">
-                    Registration successfully, You will get email when your account is approved
+                    Registration successful
+                    <b><a href="../student/login.php">Login </a></b>
                 </div>
 
+
                 <?php
-    
+            }
+    ?>
 </body>
 </html>
