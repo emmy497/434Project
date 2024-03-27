@@ -21,7 +21,7 @@ include "connection.php"
 <br>
 
 <div class="col-lg-12 text-center ">
-    <h1 style="font-family:Lucida Console">Library Management System</h1>
+    <h1 style="font-family:Lucida Console">Unilag Library Management System</h1>
 </div>
 
 
@@ -33,7 +33,7 @@ include "connection.php"
 
             <section class="login_content" style="margin-top: -40px;">
                 <form name="form1" action="" method="post">
-                    <h2>User Registration Form</h2><br>
+                    <h2>Student Registration Form</h2><br>
 
                     <div>
                         <input type="text" class="form-control" placeholder="FirstName" name="firstname" required=""/>
@@ -76,16 +76,6 @@ include "connection.php"
                 </div>
 
                 <?php
-
-            }
-            
-            
-            ?>
-
-
-    </div>
-
-   
-
+    
 </body>
 </html>

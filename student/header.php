@@ -22,7 +22,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="#" class="site_title"><i class="fa fa-book"></i> <span>LMS</span></a>
+                    <a href="#" class="site_title"><i class="fa fa-book"></i> <span>UnilagLMS</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -35,7 +35,7 @@
                     <div class="profile_info">
                         <span>Welcome,</span>
 
-                        <h2>John Doe</h2>
+                        <h2><?php echo  $_SESSION['username']; ?> </h2>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -48,23 +48,12 @@
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="my_issued_books.php"><i class="fa fa-home"></i> My Issued Books <span class="fa fa-chevron-down"></span></a>
 
                             </li>
-                            <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="search_books.php"><i class="fa fa-edit"></i> Search Books <span class="fa fa-chevron-down"></span></a>
 
-                            </li>
-                            <li><a><i class="fa fa-desktop"></i> UI Elements <span
-                                    class="fa fa-chevron-down"></span></a>
-
-                            </li>
-                            <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-
-                            </li>
-                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span
-                                    class="fa fa-chevron-down"></span></a>
-
-                            </li>
+                       
 
                         </ul>
                     </div>
@@ -87,11 +76,11 @@
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.jpg" alt="">John Doe
+                                <img src="images/img.jpg" alt=""><?php echo  $_SESSION['username']; ?> 
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 

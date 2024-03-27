@@ -12,6 +12,9 @@ include "connection.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    <link rel="stylesheet" href="Style.css">
+
     <title>Student Login Form | LMS </title>
 
     <!-- Bootstrap -->
@@ -23,7 +26,7 @@ include "connection.php";
 <br>
 
 <div class="col-lg-12 text-center ">
-    <h1 style="font-family:Lucida Console">Library Management System</h1>
+    <h1 style="font-family:Lucida Console">Unilag Library Management System</h1>
 </div>
 
 <br>
@@ -35,7 +38,7 @@ include "connection.php";
 
     <section class="login_content">
         <form name="form1" action="" method="post">
-            <h1>User Login Form</h1>
+            <h1>Student Login Form</h1>
 
             <div>
                 <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
@@ -43,17 +46,16 @@ include "connection.php";
             <div>
                 <input type="password" name="password" class="form-control" placeholder="Password" required=""/>
             </div>
-            <div>
-
+            <div class=" center-login-button">
                 <input class="btn btn-default submit" type="submit" name="submit1" value="Login">
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="reset_pass" href="../librarian/login.php">Login as Librarian</a>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="separator">
                 <p class="change_link">New to site?
-                    <a href="registration.html"> Create Account </a>
+                    <a href="../student/registration.php"> Create Account </a>
                 </p>
 
                 <div class="clearfix"></div>

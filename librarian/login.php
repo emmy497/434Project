@@ -24,7 +24,7 @@ include "connection.php"
 <br>
 
 <div class="col-lg-12 text-center ">
-    <h1 style="font-family:Lucida Console">Library Management System</h1>
+    <h1 style="font-family:Lucida Console">Unilag Library Management System</h1>
 </div>
 
 <br>
@@ -33,10 +33,9 @@ include "connection.php"
 
 
 <div class="login_wrapper">
-
     <section class="login_content">
         <form name="form1" action="" method="post">
-            <h1>User Login Form</h1>
+            <h1>Librarian Login Form</h1>
 
             <div>
                 <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
@@ -45,16 +44,15 @@ include "connection.php"
                 <input type="password" name="password" class="form-control" placeholder="Password" required=""/>
             </div>
             <div>
-
                 <input class="btn btn-default submit" type="submit" name="submit1" value="Login">
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="reset_pass" href="../student/login.php">Login as Student</a>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="separator">
                 <p class="change_link">New to site?
-                    <a href="registration.html"> Create Account </a>
+                    <a href="../librarian/registration.php"> Create Account </a>
                 </p>
 
                 <div class="clearfix"></div>
@@ -64,8 +62,6 @@ include "connection.php"
             </div>
         </form>
     </section>
-
-
 </div>
 <?php
 if(isset( $_POST['submit1'])){
@@ -75,34 +71,26 @@ if(isset( $_POST['submit1'])){
     $count=mysqli_num_rows($res);
     if( $count == 0){
         ?>
-        <div class="alert alert-danger col-lg-6 col-lg-push-3">
-    <strong style="color:white">Invalid</strong> Username Or Password.
-</div>
+             <div class="alert alert-danger col-lg-6 col-lg-push-3">
+                <strong style="color:white">Invalid</strong> Username Or Password.
+             </div>
 
-<?php
-
-    }else {
-        $_SESSION["librarian"]=$_POST["username"];
-        ?>
-        <script type="text/javascript">
-            window.location="display_student_info.php";
-        </script>
-
-
-
-<?php
+        <?php
+    }
+    else {
+        $_SESSION['librarian']=$_POST['username'];
+       
+               ?>
+            <script type="text/javascript">
+                window.location="display_student_info.php";
+            </script>
+        <?php
     }
 }
-
-
 ?>
 
 
 
-
-<div class="alert alert-danger col-lg-6 col-lg-push-3">
-    <strong style="color:white">Invalid</strong> Username Or Password.
-</div>
 
 
 </body>

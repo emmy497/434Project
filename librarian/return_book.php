@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION["librarian"])){
+?>
+<script>
+    window.location="login.php"
+</script>
+<?php
+}
 include "connection.php";
 include "header.php";
 ?>

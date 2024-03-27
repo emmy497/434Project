@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION["librarian"])){
+?>
+<script>
+    window.location="login.php"
+</script>
+<?php
+}
 include "connection.php";
 include "header.php";
 ?>
@@ -11,7 +19,7 @@ include "header.php";
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Plain Page</h3>
+                        <h3></h3>
                     </div>
 
                     <div class="title_right">
@@ -49,26 +57,27 @@ include "header.php";
                                 echo "<table class='table table-bordered'>";
                                 echo "<tr>";
                                 echo "<th>"; echo "books name"; echo "</th>";
-                                echo "<th>"; echo "books image"; echo "</th>";
+                                // echo "<th>"; echo "books image"; echo "</th>";
                                 echo "<th>"; echo "author name"; echo "</th>";
                                 echo "<th>"; echo "publication name"; echo "</th>";
                                 echo "<th>"; echo "purchase date"; echo "</th>";
                                 echo "<th>"; echo "books price"; echo "</th>";
                                 echo "<th>"; echo "books quantity"; echo "</th>";
                                 echo "<th>"; echo "available quantity"; echo "</th>";
+                                echo "<th>"; echo "Delete Books"; echo "</th>";
                                 echo "</tr>";
     
     
                                 while($row=mysqli_fetch_array($res)){
                                    echo "<tr>";
                                     echo "<td>"; echo $row["books_name"]; echo "</td>";
-                                    echo "<td>"; ?> <img src="<?php echo $row["books_image"]; ?>" height="100" width="100"> <?php echo "</td>";
                                     echo "<td>"; echo $row["books_author_name"]; echo "</td>";
                                     echo "<td>"; echo $row["books_publication_name"]; echo "</td>";
                                     echo "<td>"; echo $row["books_purchase_date"]; echo "</td>";
                                     echo "<td>"; echo $row["books_price"]; echo "</td>";
                                     echo "<td>"; echo $row["books_qty"]; echo "</td>";
                                     echo "<td>"; echo $row["available_qty"]; echo "</td>";
+                                    echo "<td>"; ?> <a href="delete_books.php?id=<?php echo $row["id"]; ?>">Delete Book</a> <?php echo "</td>";
                                     echo "</tr>";
                                 }
                                 
@@ -83,26 +92,26 @@ include "header.php";
                             echo "<table class='table table-bordered'>";
                             echo "<tr>";
                             echo "<th>"; echo "books name"; echo "</th>";
-                            echo "<th>"; echo "books image"; echo "</th>";
                             echo "<th>"; echo "author name"; echo "</th>";
                             echo "<th>"; echo "publication name"; echo "</th>";
                             echo "<th>"; echo "purchase date"; echo "</th>";
                             echo "<th>"; echo "books price"; echo "</th>";
                             echo "<th>"; echo "books quantity"; echo "</th>";
                             echo "<th>"; echo "available quantity"; echo "</th>";
+                            echo "<th>"; echo "Delete Books"; echo "</th>";
                             echo "</tr>";
 
 
                             while($row=mysqli_fetch_array($res)){
                                echo "<tr>";
                                 echo "<td>"; echo $row["books_name"]; echo "</td>";
-                                echo "<td>"; ?> <img src="<?php echo $row["books_image"]; ?>" height="100" width="100"> <?php echo "</td>";
                                 echo "<td>"; echo $row["books_author_name"]; echo "</td>";
                                 echo "<td>"; echo $row["books_publication_name"]; echo "</td>";
                                 echo "<td>"; echo $row["books_purchase_date"]; echo "</td>";
                                 echo "<td>"; echo $row["books_price"]; echo "</td>";
                                 echo "<td>"; echo $row["books_qty"]; echo "</td>";
                                 echo "<td>"; echo $row["available_qty"]; echo "</td>";
+                                echo "<td>"; ?> <a href="delete_books.php?id=<?php echo $row["id"]; ?>">Delete Book</a> <?php echo "</td>";
                                 echo "</tr>";
                             }
                             

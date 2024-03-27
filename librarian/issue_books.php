@@ -1,5 +1,12 @@
 <?php
 session_start();
+if(!isset($_SESSION["librarian"])){
+?>
+<script>
+    window.location="login.php"
+</script>
+<?php
+}
 include "header.php";
 include "connection.php"
 ?>
@@ -12,19 +19,10 @@ include "connection.php"
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Plain Page</h3>
+                        <h3></h3>
                     </div>
 
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
 
                 <div class="clearfix"></div>
@@ -32,7 +30,7 @@ include "connection.php"
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Plain Page</h2>
+                                <h2>ISSUE BOOKS TO STUDENTS</h2>
 
                                 <div class="clearfix"></div>
                             </div>
@@ -93,7 +91,7 @@ include "connection.php"
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="bookname" class="form-control" selectpicker>
+                                        <select name="booksname" class="form-control" selectpicker>
                                             <?php 
                                             $res=mysqli_query($link, "select books_name from add_books");
                                             while($row=mysqli_fetch_array($res)){
@@ -125,16 +123,32 @@ include "connection.php"
 </form>
 
 <?php 
-if(isset($_POST["submit2"])){
-    mysqli_query($link, "insert into issue_books values('','$_SESSION[$matric]','$_POST[studentname]','$_POST[studentcontact]','$_POST[studentemail]','$_POST[bookname]','$_POST[bookissuedate]','','$_SESSION[username]')");
-    mysqli_query($link, "update add_books set available_qty=available_qty-1 where books_name='$_POST[booksname]'")
-?> 
-<script type="text/javascript">
-    alert("Books issued successfully");
-    window.location.href=window.location.href;
-</script>
+    if(isset($_POST["submit2"])){
 
-<?php
+        $qty=0;
+        $res=mysqli_query($link, "select * from add_books where books_name='$_POST[booksname]'");
+        while($row=mysqli_fetch_array($res)){
+            $qty=$row["available_qty"];  
+        }
+
+        if($qty==0){
+            ?>
+            <div class="alert alert-danger col-lg-6 col-lg-push-3">
+                <strong style="color:white">This book is not available in stock </strong>
+            </div>
+         <?php
+        }else{
+            mysqli_query($link, "insert into issue_books values('','$_SESSION[matric]','$_POST[studentname]','$_POST[studentcontact]','$_POST[studentemail]','$_POST[booksname]','$_POST[bookissuedate]','','$_SESSION[username]')");
+            mysqli_query($link, "update add_books set available_qty=available_qty-1 where books_name='$_POST[booksname]'");
+        ?> 
+            <script type="text/javascript">
+                alert("Books issued successfully");
+                window.location.href=window.location.href;
+            </script>
+        
+        <?php
+        }
+
 
 }
 
